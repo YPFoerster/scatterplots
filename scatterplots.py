@@ -28,8 +28,8 @@ class scatter():
         self.markers=make_marker_iterable()
         self.colors=make_color_iterable()
 
-    def scatter(self,x_data,y_data):
-        self.axis.scatter(x_data,y_data,*self.args,facecolors='none',edgecolors=next(self.colors),marker=next(self.markers),**self.kwargs)
+    def scatter(self,x_data,y_data,**further_kwargs):
+        self.axis.scatter(x_data,y_data,*self.args,facecolors='none',edgecolors=next(self.colors),marker=next(self.markers),**self.kwargs,**further_kwargs)
         return self.figure,self.axis
 
 def make_marker_iterable():
@@ -37,5 +37,5 @@ def make_marker_iterable():
 
 def make_color_iterable():
     prop_cycle = plt.rcParams['axes.prop_cycle']
-    colors = iter(prop_cycle.by_key()['color'])
+    colors = cycle(prop_cycle.by_key()['color'])
     return colors
