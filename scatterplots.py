@@ -39,3 +39,17 @@ def make_color_iterable():
     prop_cycle = plt.rcParams['axes.prop_cycle']
     colors = cycle(prop_cycle.by_key()['color'])
     return colors
+
+
+if __name__ == '__main__':
+    import numpy as np
+    x_data=np.random.randn(1000)
+    y1_data=np.random.randn(1000)
+    y2_data=np.random.randn(1000)*2
+
+    scatterer=scatter()
+    fig,axis=scatterer.figure,scatterer.axis
+    scatterer.scatter(x_data,y1_data,label=r'$\sigma = 1$')
+    scatterer.scatter(x_data,y2_data,label=r'$\sigma = 2$')
+    axis.legend(loc='best')
+    plt.show()
