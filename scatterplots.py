@@ -33,7 +33,7 @@ class scatter():
         return self.figure,self.axis
 
 def make_marker_iterable():
-    return cycle(('o','v','<','>','p','s','8'))
+    return cycle(('o','^','<','>','p','s','8'))
 
 def make_color_iterable():
     prop_cycle = plt.rcParams['axes.prop_cycle']
