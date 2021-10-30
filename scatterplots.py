@@ -7,7 +7,7 @@ from itertools import cycle
 
 
 __all__=[
-'scatter','make_marker_iterable','make_color_iterable'
+'scatter','errorbar','make_marker_iterable','make_color_iterable'
 ]
 
 class scatter():
@@ -31,6 +31,12 @@ class scatter():
     def scatter(self,x_data,y_data,**further_kwargs):
         self.axis.scatter(x_data,y_data,*self.args,facecolors='none',edgecolors=next(self.colors),marker=next(self.markers),**self.kwargs,**further_kwargs)
         return self.figure,self.axis
+
+class errorbar(scatter):
+
+    def scatter(self,x_data,y_data,**errbar_kwargs):
+        color=next(self.colors)
+        self.axis.errorbar(x_data,y_data,*self.args, marker=next(self.markers),mfc='none',mec=color,ecolor=color,**self.kwargs,**errbar_kwargs)
 
 def make_marker_iterable():
     return cycle(('o','^','<','>','p','s','8'))
