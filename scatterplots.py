@@ -29,7 +29,8 @@ class scatter():
         self.colors=make_color_iterable()
 
     def scatter(self,x_data,y_data,**further_kwargs):
-        self.axis.scatter(x_data,y_data,*self.args,facecolors='none',edgecolors=next(self.colors),marker=next(self.markers),**self.kwargs,**further_kwargs)
+        a=self.axis.scatter(x_data,y_data,*self.args,edgecolors=next(self.colors),marker=next(self.markers),**self.kwargs,**further_kwargs)
+        a.set_facecolor('none')
         return self.figure,self.axis
 
 class errorbar(scatter):
